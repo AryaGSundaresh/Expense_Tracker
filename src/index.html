@@ -8,17 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Expense Tracker</h1>
+        <h1>💸 Expense Tracker</h1>
 
         <div class="input-section">
             <input type="text" id="title" placeholder="Expense Title" />
-            <input type="number" id="amount" placeholder="Amount" />
-            <button onclick="addExpense()">Add</button>
+            <input type="number" id="amount" placeholder="Amount (e.g., 500)" />
+            <button onclick="addExpense()">Add Expense</button>
         </div>
 
-        <ul id="expense-list"></ul>
+        <ul id="expense-list">
+            </ul>
 
-        <h2>Total: ₹<span id="total">0</span></h2>
+        <h2 class="total-section">
+            Total Spent: ₹<span id="total">0</span>
+        </h2>
     </div>
 
     <script src="script.js"></script>
