@@ -1,0 +1,45 @@
+body {
+    background: #f7f7f7;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 350px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+}
+
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#expense-list {
+    margin-top: 20px;
+    padding: 0;
+}
+
+#expense-list li {
+    list-style: none;
+    padding: 10px;
+    background: #eee;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
