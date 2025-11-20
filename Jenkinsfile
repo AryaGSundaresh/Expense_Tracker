@@ -11,26 +11,22 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh 'docker build -t expense-tracker:latest .'
-                }
+                bat 'docker build -t expense-tracker:latest .'
             }
         }
 
         stage('Run Tests') {
             steps {
-                echo "No automated tests available — Running basic Docker verification"
-                sh 'docker images'
+                echo "Basic verification"
+                bat 'docker images'
             }
         }
 
         stage('Deploy Container') {
             steps {
-                script {
-                    sh 'docker stop expense || true'
-                    sh 'docker rm expense || true'
-                    sh 'docker run -d -p 8080:80 --name expense expense-tracker:latest'
-                }
+                bat 'docker stop expense || exit 0'
+                bat 'docker rm expense || exit 0'
+                bat 'docker run -d -p 8081:80 --name expense expense-tracker:latest'
             }
         }
     }
