@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/expense-tracker-ci-cd.git'
+                git 'https://github.com/AryaGSundaresh/Expense_Tracker.git'
             }
         }
 
