@@ -40,7 +40,7 @@ pipeline {
                 script {
                     bat 'docker stop expense || exit 0'
                     bat 'docker rm expense || exit 0'
-                    bat 'docker run -d -p 8080:80 --name expense %IMAGE_NAME%:latest'
+                    bat 'docker run -d -p 8081:80 --name expense %IMAGE_NAME%:latest'
                 }
             }
         }
