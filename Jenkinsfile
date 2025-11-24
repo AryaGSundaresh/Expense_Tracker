@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ${IMAGE_NAME}:latest .'
+                bat 'docker build -t %IMAGE_NAME%:latest .'
             }
         }
 
@@ -20,9 +20,9 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh '''
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push ${IMAGE_NAME}:latest
+                    bat '''
+                        echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
+                        docker push %IMAGE_NAME%:latest
                     '''
                 }
             }
@@ -31,16 +31,16 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo "No tests — basic verification"
-                sh 'docker images'
+                bat 'docker images'
             }
         }
 
         stage('Deploy Container') {
             steps {
                 script {
-                    sh 'docker stop expense || true'
-                    sh 'docker rm expense || true'
-                    sh 'docker run -d -p 8080:80 --name expense ${IMAGE_NAME}:latest'
+                    bat 'docker stop expense || exit 0'
+                    bat 'docker rm expense || exit 0'
+                    bat 'docker run -d -p 8080:80 --name expense %IMAGE_NAME%:latest'
                 }
             }
         }
