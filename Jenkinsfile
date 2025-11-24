@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/AryaGSundaresh/Expense_Tracker.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t ${IMAGE_NAME}:latest .'
