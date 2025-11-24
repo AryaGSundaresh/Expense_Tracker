@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "aryagsundaresh1/expense-tracker"
+    }
+
     stages {
 
         stage('Clone Repository') {
@@ -11,23 +15,28 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t expense-tracker:latest .'
+                script {
+                    sh 'docker build -t expense-tracker:latest .'
+                }
             }
         }
 
         stage('Run Tests') {
             steps {
-                echo "Basic verification"
-                bat 'docker images'
+                echo "No automated tests available — Running basic Docker verification"
+                sh 'docker images'
             }
         }
 
         stage('Deploy Container') {
             steps {
-                bat 'docker stop expense || exit 0'
-                bat 'docker rm expense || exit 0'
-                bat 'docker run -d -p 8081:80 --name expense expense-tracker:latest'
+                script {
+                    sh 'docker stop expense || true'
+                    sh 'docker rm expense || true'
+                    sh 'docker run -d -p 8080:80 --name expense expense-tracker:latest'
+                }
             }
         }
+
     }
 }
