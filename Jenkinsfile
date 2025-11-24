@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "aryagsundaresh/expense-tracker"
+        IMAGE_NAME = "aryagsundaresh1/expense-tracker"
     }
 
     stages {
